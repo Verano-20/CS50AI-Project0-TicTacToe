@@ -68,7 +68,7 @@ def result(board, action):
     symbol = player(board)
     newboard[action[0]][action[1]] = symbol
     return newboard
-   
+
 
 def winner(board):
     """
@@ -78,18 +78,18 @@ def winner(board):
     for i in range(3):
         if board[i][0] == board[i][1] == board[i][2] and board[i][0] != EMPTY:
             return board[i][0]
-    
+
     # Check each column
     for j in range(3):
-        if board[0][j] == board[1][j] == board[2][j] and board[i][0] != EMPTY:
+        if board[0][j] == board[1][j] == board[2][j] and board[0][j] != EMPTY:
             return board[0][j]
-    
+
     # Check diagonals
-    if board[0][0] == board[1][1] == board[2][2] and board[i][0] != EMPTY:
+    if board[0][0] == board[1][1] == board[2][2] and board[0][0] != EMPTY:
         return board[0][0]
-    if board[0][2] == board[1][1] == board[2][0] and board[i][0] != EMPTY:
+    if board[0][2] == board[1][1] == board[2][0] and board[0][2] != EMPTY:
         return board[0][2]
-    
+
     # No winner
     return None
 
@@ -128,7 +128,7 @@ def minimax(board):
     """
     if terminal(board):
         return None
-  
+
     def MAX_VALUE(board):
         if terminal(board):
             return ((utility(board), None))
@@ -139,7 +139,7 @@ def minimax(board):
             if value > v:
                 v, move = value, action
         return ((v, move))
-    
+
     def MIN_VALUE(board):
         if terminal(board):
             return ((utility(board), None))
